@@ -5,8 +5,11 @@ import objects.Product;
 import java.util.List;
 
 public class Main {
+    /**
+     * Scrapes a website and stores information in the provided database
+     * @param args URLtoScrape, connString, username, password
+     */
     public static void main(String[] args) {
-        try{
             Scraper s = new Scraper();
             List<Product> products = s.scrape(args[0]);
 
@@ -15,8 +18,5 @@ public class Main {
             for(Product p : products){
                 db.insertProduct(p);
             }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
     }
 }

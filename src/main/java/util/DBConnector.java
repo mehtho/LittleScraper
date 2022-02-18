@@ -9,6 +9,12 @@ public class DBConnector {
             + "values(?,?,?,?,?)";
     private Connection conn = null;
 
+    /**
+     * Initialises database connection
+     * @param connString Database URL and port
+     * @param user Database username
+     * @param password Database password
+     */
     public DBConnector(String connString, String user, String password) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -22,6 +28,11 @@ public class DBConnector {
         }
     }
 
+    /**
+     * Stores a product in the database
+     * @param p Product to add to database
+     * @return  boolean whether insertion was successful
+     */
     public boolean insertProduct(Product p) {
         try {
             PreparedStatement ps = conn.prepareStatement(insert);

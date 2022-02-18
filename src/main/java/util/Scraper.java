@@ -10,6 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Scraper {
+    /**
+     * Scrapes a list of Product objects from a given URL
+     * @param url URL of site to Scrape
+     * @return  List of Products from the scraped site
+     */
     public List<Product> scrape(String url){
         ArrayList<Product> scrapedProducts = new ArrayList<>();
         WebClient webClient = new WebClient(BrowserVersion.CHROME);
@@ -33,7 +38,12 @@ public class Scraper {
         return null;
     }
 
-    public Product handleChunk(HtmlElement he){
+    /**
+     * Converts an HTML element containing individual product information into a Product object
+     * @param he One of the repeated HTML Elements containing each product's information
+     * @return The HTML Element's product information in a Product
+     */
+    private Product handleChunk(HtmlElement he){
         HtmlAnchor linkAnchor = he.getFirstByXPath(".//a[@class='product photo product-item-photo']");
         String href = linkAnchor.getHrefAttribute();
 
